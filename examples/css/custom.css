@@ -1,39 +1,99 @@
+html {
+	box-sizing: border-box;
+}
+
+*,
+*:after,
+*:before {
+	box-sizing: inherit;
+}
+
 body {
-	position: relative;
+	background-color: #d53c61;
+	color: #ffffff;
+	font-family: 'Montserrat', sans-serif;
 	left: 0;
+	position: relative;
 }
 
-.starter-template {
-	padding: 3rem 1.5rem;
+h1 {
+	font-size: 55px;
+  font-weight: bold;
+  line-height: normal;
+  letter-spacing: -3px;
+}
+
+h1 > span {
+	font-weight: 300;
+}
+
+.lead {
+	font-size: 16px;
+	line-height: 1.44;
+	max-width: 280px;
+	margin-bottom: 0;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 0;
+}
+
+main {
 	text-align: center;
+	padding-left: 20px;
+	padding-right: 20px;
 }
 
+.btn-open {
+	background-color: #fd698d;
+	border: 0;
+	border-radius: 27.5px;
+	box-shadow: 0 2px 14px 0 rgba(0, 0, 0, 0.05);
+	color: #ffffff;
+	display: inline-block;
+	font-size: 16px;
+	font-weight: bold;
+	margin-top: 25px;
+	min-width: 150px;
+	outline: 0;
+	padding-bottom: 15px;
+	padding-top: 15px;
+	cursor: pointer;
+}
+
+.btn-open:active {
+	box-shadow: inset 0 3px 5px 0px rgba(0, 0, 0, .1);
+}
+
+/* zeynepjs menu styles */
 html.zeynep-opened {
 	overflow-x: hidden;
 }
+
 html.zeynep-opened body {
-	width: 100%;
 	position: fixed;
+	width: 100%;
 }
+
 html.zeynep-opened .zeynep {
 	pointer-events: auto;
 }
 
 .zeynep {
-	position: fixed;
-	left: 0;
-	top: 0;
+	background-color: #ffffff;
 	bottom: 0;
-	width: 0;
+	color: #404143;
+	left: 0;
 	overflow: hidden;
 	overflow-y: auto;
-	background-color: #272626;
-	color: #ffffff;
-	z-index: 1011;
-	-webkit-overflow-scrolling: touch;
 	pointer-events: none;
+	position: fixed;
+	top: 0;
 	transform: translateX(-100%);
+	z-index: 1011;
+	width: 0;
+	-webkit-overflow-scrolling: touch;
 }
+
 html:not(.no-transition) body,
 .zeynep:not(.no-transition),
 .zeynep .submenu:not(.no-transition) {
@@ -42,91 +102,120 @@ html:not(.no-transition) body,
 }
 
 .zeynep-overlay {
-	position: fixed;
-	top: 0;
+	background-color: rgba(0, 0, 0, .42);;
 	bottom: 0;
-	left: 0;
-	right: 0;
-	z-index: 1010;
 	display: none;
-	/*background-color: rgba(0,0,0,.4);*/
+	left: 0;
+	position: fixed;
+	right: 0;
+	top: 0;
+	z-index: 1010;
 }
+
 .zeynep-opened .zeynep-overlay {
 	display: block;
 }
 
 .zeynep ul {
   list-style-type: none;
-  padding: 0;
-	-webkit-overflow-scrolling:touch;
-}
-.zeynep ul > li {
-	padding: 15px 26px;
-	display: block;
-}
-.zeynep ul > li.has-submenu {
-	background-image: url("../images/submenu-arrow.svg");
-	background-repeat: no-repeat;
-	background-position: right 26px center;
-}
-.zeynep ul > li > a {
-	font-size: 16px;
-	color: #ffffff;
-	display: block;
-	font-weight: bold;
-	text-decoration: none;
-}
-.zeynep ul > li:not(:last-child) {
-	border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+	padding: 0;
+	padding-left: 20px;
+	-webkit-overflow-scrolling: touch;
 }
 
+.zeynep ul > li {
+	display: block;
+}
+
+.zeynep ul > li > a {
+	color: inherit;
+	display: block;
+	font-size: 14px;
+	font-weight: bold;
+	padding: 18px 20px;
+	text-decoration: none;
+	transition: all 150ms;
+}
+
+.zeynep ul > li > a:hover {
+	background-color: #efefef;
+	border-radius: 3px;
+}
+
+.zeynep ul > li:not(:last-child) > a {
+	border-bottom: 1px solid #efefef;
+}
+
+.zeynep ul > li.has-submenu > a {
+	background-image: url("../images/submenu-arrow.svg");
+	background-position: right 20px center;
+	background-repeat: no-repeat;
+	background-size: 8px 14px;
+}
+
+.zeynep ul > li.has-submenu > a:hover {
+	background-image: url("../images/submenu-arrow-active.svg");
+}
+
+/* zeynepjs submenu styles */
 .zeynep .submenu {
-	position: fixed;
-	top: 0;
+	background-color: #ffffff;
 	bottom: 0;
 	left: 100%;
+	min-height: 100%;
 	overflow: hidden;
 	overflow-y: auto;
-	background-color: #272626;
-	min-height: 100%;
+	position: fixed;
+	top: 0;
 	width: 100%;
 }
+
 .zeynep .submenu.opened {
 	left: 0;
 }
+
 .zeynep .submenu-header {
-	background-color: #333333;
-	padding: 20px 26px;
+	background-image: url("../images/menu-back.svg");
+	background-position: left 20px center;
+	background-repeat: no-repeat;
+	background-size: 8px 14px;
+	border-bottom: solid 1px #efefef;
 	cursor: pointer;
 	position: relative;
-	padding-left: 55px;
 }
+
 .zeynep .submenu-header > a {
-	color: #ffffff;
+	color: inherit;
+	display: block;
 	font-size: 14px;
 	font-weight: bold;
-	display: block;
+	padding: 18px 20px;
+	padding-left: 40px;
 	text-decoration: none;
 }
+
 .zeynep .submenu-header > a:before {
+	background-image: url("../images/submenu-arrow.svg");
+	background-position: right 20px center;
+	background-repeat: no-repeat;
+	background-size: 8px 14px;
 	content: "";
+	height: 100%;
+	left: 26px;
 	position: absolute;
 	top: 0;
-	left: 26px;
-	width: 20px;
-	height: 100%;
 	transform: rotate(-180deg);
-	background-image: url("../images/submenu-arrow.svg");
-	background-repeat: no-repeat;
-	background-position: center right;
+	width: 20px;
 }
+
 .zeynep .submenu > label {
-	padding-left: 26px;
-	color: #ffffff;
-	font-size: 16px;
-	opacity: .5;
-	margin-top: 22px;
-	margin-bottom: 16px;
+	color: #e77691;
 	display: block;
+	font-size: 13px;
+	font-weight: bold;
+	margin-bottom: 8px;
+	margin-top: 19px;
+	opacity: .5;
+	padding-left: 40px;
 	width: 100%;
 }

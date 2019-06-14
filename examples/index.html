@@ -1,196 +1,197 @@
 <!DOCTYPE html>
-<html lang="en">
+<html dir="ltr" lang="en">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 
-<head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<title>zeynepjs mobile side menu example</title>
-	<link href="./css/custom.css" rel="stylesheet">
-	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" rel="stylesheet">
-</head>
+		<!-- styles -->
+		<link href="https://fonts.googleapis.com/css?family=Montserrat:200,400,700&display=swap" rel="stylesheet">
+		<link href="https://necolas.github.io/normalize.css/latest/normalize.css" rel="stylesheet">
+		<link href="./css/custom.css" rel="stylesheet">
 
-<body>
-	<div class="zeynep">
-		<ul>
-			<li>
-				<a href="#">Home</a>
-			</li>
+		<title>zeynepjs - A simple multi-level menu with support for sub level items</title>
+	</head>
 
-			<li class="has-submenu">
-				<a href="#" data-submenu="stores">Stores</a>
+	<body>
 
-				<div id="stores" class="submenu">
-					<div class="submenu-header" data-submenu-close="stores">
-						<a href="#">Main Menu</a>
-					</div>
+		<div class="zeynep">
+			<ul>
+				<li>
+					<a href="#">Home</a>
+				</li>
 
-					<label>Stores</label>
+				<li class="has-submenu">
+					<a href="#" data-submenu="stores">Stores</a>
 
-					<ul>
-						<li>
-							<a href="#">Istanbul</a>
-						</li>
-
-						<li>
-							<a href="#">Mardin</a>
-						</li>
-
-						<li>
-							<a href="#">Amed</a>
-						</li>
-					</ul>
-				</div>
-			</li>
-
-			<li class="has-submenu">
-					<a href="#" data-submenu="categories">Categories</a>
-	
-					<div id="categories" class="submenu">
-						<div class="submenu-header" data-submenu-close="categories">
+					<div id="stores" class="submenu">
+						<div class="submenu-header" data-submenu-close="stores">
 							<a href="#">Main Menu</a>
 						</div>
-	
-						<label>Categories</label>
-	
+
+						<label>Stores</label>
+
 						<ul>
-							<li class="has-submenu">
-								<a href="#" data-submenu="electronics">Electronics</a>
-
-								<div id="electronics" class="submenu">
-									<div class="submenu-header" data-submenu-close="electronics">
-										<a href="#">Categories</a>
-									</div>
-				
-									<label>Electronics</label>
-				
-									<ul>
-										<li>
-											<a href="#">Camera & Photo</a>
-										</li>
-				
-										<li>
-											<a href="#">Home Audio</a>
-										</li>
-				
-										<li>
-											<a href="#">Tv & Video</a>
-										</li>
-
-										<li>
-											<a href="#">Computers & Accessories</a>
-										</li>
-
-										<li>
-											<a href="#">Car & Vehicle Electronics</a>
-										</li>
-
-										<li>
-											<a href="#">Portable Audio & Video</a>
-										</li>
-
-										<li>
-											<a href="#">Headphones</a>
-										</li>
-
-										<li>
-											<a href="#">Accessories & Supplies</a>
-										</li>
-
-										<li>
-											<a href="#">Video Projectors</a>
-										</li>
-
-										<li>
-											<a href="#">Office Electronics</a>
-										</li>
-
-										<li>
-											<a href="#">Wearable Technology</a>
-										</li>
-
-										<li>
-											<a href="#">Service Plans</a>
-										</li>
-									</ul>
-								</div>
+							<li>
+								<a href="#">Istanbul</a>
 							</li>
 
 							<li>
-								<a href="#">Books</a>
+								<a href="#">Mardin</a>
 							</li>
 
 							<li>
-								<a href="#">Video Games</a>
-							</li>
-
-							<li>
-								<a href="#">Computers</a>
+								<a href="#">Amed</a>
 							</li>
 						</ul>
 					</div>
 				</li>
 
-			<li>
-				<a href="#">Contact</a>
-			</li>
+				<li class="has-submenu">
+						<a href="#" data-submenu="categories">Categories</a>
+		
+						<div id="categories" class="submenu">
+							<div class="submenu-header" data-submenu-close="categories">
+								<a href="#">Main Menu</a>
+							</div>
+		
+							<label>Categories</label>
+		
+							<ul>
+								<li class="has-submenu">
+									<a href="#" data-submenu="electronics">Electronics</a>
 
-			<li>
-				<a href="#">About</a>
-			</li>
-		</ul>
-	</div>
+									<div id="electronics" class="submenu">
+										<div class="submenu-header" data-submenu-close="electronics">
+											<a href="#">Categories</a>
+										</div>
+					
+										<label>Electronics</label>
+					
+										<ul>
+											<li>
+												<a href="#">Camera & Photo</a>
+											</li>
+					
+											<li>
+												<a href="#">Home Audio</a>
+											</li>
+					
+											<li>
+												<a href="#">Tv & Video</a>
+											</li>
 
-	<nav class="navbar navbar-dark bg-dark">
-		<a class="navbar-brand" href="#">Home</a>
-		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
-			<span class="navbar-toggler-icon"></span>
-		</button>
-	</nav>
+											<li>
+												<a href="#">Computers & Accessories</a>
+											</li>
 
-	<main role="main" class="container">
-		<div class="starter-template">
-			<h1>zeynepjs example</h1>
-			<p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit,<br />sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+											<li>
+												<a href="#">Car & Vehicle Electronics</a>
+											</li>
+
+											<li>
+												<a href="#">Portable Audio & Video</a>
+											</li>
+
+											<li>
+												<a href="#">Headphones</a>
+											</li>
+
+											<li>
+												<a href="#">Accessories & Supplies</a>
+											</li>
+
+											<li>
+												<a href="#">Video Projectors</a>
+											</li>
+
+											<li>
+												<a href="#">Office Electronics</a>
+											</li>
+
+											<li>
+												<a href="#">Wearable Technology</a>
+											</li>
+
+											<li>
+												<a href="#">Service Plans</a>
+											</li>
+										</ul>
+									</div>
+								</li>
+
+								<li>
+									<a href="#">Books</a>
+								</li>
+
+								<li>
+									<a href="#">Video Games</a>
+								</li>
+
+								<li>
+									<a href="#">Computers</a>
+								</li>
+							</ul>
+						</div>
+					</li>
+
+				<li>
+					<a href="#">Contact</a>
+				</li>
+
+				<li>
+					<a href="#">About</a>
+				</li>
+			</ul>
 		</div>
-	</main>
 
-	<div class="zeynep-overlay"></div>
-	
-  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-  <script src="../dist/jquery.zeynep.min.js"></script>
-  <script>
-    $(function() {
-			// init zeynepjs
-			var zeynep = $('.zeynep').zeynep({
-        onClosed: function () {
-					// enable main wrapper element clicks on any its children element
-					$("body main").attr("style", "");
+		<main>
+			<h1>
+				zeynep<span>js</span>
+			</h1>
 
-					console.log('the side menu is closed.');
-        },
-        onOpened: function () {
-					// disable main wrapper element clicks on any its children element
-					$("body main").attr("style", "pointer-events: none;");
+			<p class="lead">A simple multi-level menu with support for sub level items.</p>
 
-					console.log('the side menu is opened.');
-        }
-    	});
+			<button type="button" class="btn-open">Open!</button>
+		</main>
 
-			// handle zeynep overlay click
-			$(".zeynep-overlay").click(function () {
-				zeynep.close();
-			});
+		<div class="zeynep-overlay"></div>
+		
+		<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+		<script src="../dist/jquery.zeynep.min.js"></script>
+		
+		<script>
+			$(function() {
+				// init zeynepjs
+				var zeynep = $('.zeynep').zeynep({
+					onClosed: function () {
+						// enable main wrapper element clicks on any its children element
+						$("body main").attr("style", "");
 
-			// open side menu if hamburger menu is clicked
-			$("nav .navbar-toggler").click(function () {
-				if ($("html").hasClass("zeynep-opened")) {
+						console.log('the side menu is closed.');
+					},
+					onOpened: function () {
+						// disable main wrapper element clicks on any its children element
+						$("body main").attr("style", "pointer-events: none;");
+
+						console.log('the side menu is opened.');
+					}
+				});
+
+				// handle zeynep overlay click
+				$(".zeynep-overlay").click(function () {
 					zeynep.close();
-				} else {
-					zeynep.open();
-				}
-			});
-		});
-  </script>
-</body>
+				});
 
+				// open side menu if the button is clicked
+				$(".btn-open").click(function () {
+					if ($("html").hasClass("zeynep-opened")) {
+						zeynep.close();
+					} else {
+						zeynep.open();
+					}
+				});
+			});
+		</script>
+
+	</body>
 </html>
