@@ -1,23 +1,27 @@
 {
   "name": "zeynepjs",
-  "version": "1.0.0",
-  "description": "a light-weight jquery mobile side menu plugin",
+  "version": "1.0.1",
+  "description": "a light-weight, multi-level jQuery mobile side menu plugin",
   "main": "index.js",
   "directories": {
     "example": "examples"
   },
   "scripts": {
     "start": "gulp",
-    "prod": "gulp production"
+    "build": "gulp build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hsynlms/zeynepjs.git"
   },
   "author": "Huseyin Elmas",
   "license": "MIT",
   "devDependencies": {
-    "del": "^3.0.0",
-    "gulp": "^4.0.0",
+    "del": "^4.1.1",
+    "gulp": "^4.0.2",
     "gulp-header": "^2.0.7",
     "gulp-rename": "^1.4.0",
-    "gulp-uglify": "^3.0.1",
-    "gulp-watch": "^5.0.1"
+    "gulp-sourcemaps": "^2.6.5",
+    "gulp-uglify": "^3.0.2"
   }
 }

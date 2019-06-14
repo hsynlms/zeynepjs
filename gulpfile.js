@@ -1,40 +1,66 @@
-var gulp = require('gulp');
-var watch = require('gulp-watch');
-var rename = require('gulp-rename');
-var uglify = require('gulp-uglify');
-var header = require('gulp-header');
-var del = require('del');
+const gulp = require('gulp');
+const rename = require('gulp-rename');
+const uglify = require('gulp-uglify');
+const header = require('gulp-header');
+const del = require('del');
+const pkg = require('./package.json');
+
+const tpl = '/*!\n* zeynepjs v<%= version %>\n* A light-weight, multi-level jQuery mobile side menu plugin.\n*\n* Author: <%= author %>\n*/\n';
 
 // src and dist paths
-var paths = {
-  srcFile: './src/jquery.zeynep.js',
-  dist: './dist'
+const paths = {
+  srcFile: './src/*.js',
+  dist: './dist/'
 };
 
 // clean dist folder
 gulp.task('clean', function () {
-  return del([paths.dist + '/*']);
+  return del(paths.dist);
 });
 
 // watch for changes of source file to build distributable file (only for stage environment)
 gulp.task('watch', function () {
-  return watch([paths.srcFile], gulp.series('production'));
+  return gulp.watch([paths.srcFile], gulp.series('build'));
 });
 
-// generate production file in dist folder
-gulp.task('production', gulp.series('clean', function () {
+// generate/build production file in dist folder
+gulp.task('build', gulp.series('clean', function () {
+  const sourcemaps = require('gulp-sourcemaps');
+
   return gulp.src(paths.srcFile)
-    .pipe(rename({ suffix: '.min' }))
-    .pipe(uglify())
-    .pipe(header(
-        '/*\n* zeynepjs v<%= version %>\n* A light-weight jQuery mobile side menu plugin.\n*\n* Author:\n* <%= author %>\n*/\n',
+    .pipe(sourcemaps.init())
+    .pipe(
+      header(
+        tpl,
         {
-          version : '1.0.0',
-          author: 'Huseyin Elmas <hsynlms47@gmail.com>'
+          version: pkg.version,
+          author: pkg.author
         }
-      ))
+      )
+    )
+    .pipe(rename({ prefix: 'jquery.' }))
+    .pipe(gulp.dest(paths.dist))
+    .pipe(uglify())
+    .pipe(
+      header(
+        tpl,
+        {
+          version: pkg.version,
+          author: pkg.author
+        }
+      )
+    )
+    .pipe(rename({ suffix: '.min' }))
+    .pipe(sourcemaps.write('.'))
     .pipe(gulp.dest(paths.dist));
 }));
 
 // run gulp
-gulp.task('default', gulp.series('clean', 'production', 'watch'));
+gulp.task(
+  'default',
+  gulp.series(
+    'clean',
+    'build',
+    'watch'
+  )
+);
