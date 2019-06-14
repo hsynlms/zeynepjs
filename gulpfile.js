@@ -5,7 +5,7 @@ const header = require('gulp-header');
 const del = require('del');
 const pkg = require('./package.json');
 
-const tpl = '/*!\n* zeynepjs v<%= version %>\n* A light-weight, multi-level jQuery mobile side menu plugin.\n*\n* Author: <%= author %>\n*/\n';
+const tpl = '/*!\n* zeynepjs v<%= version %>\n* A light-weight multi-level jQuery side menu plugin.\n*\n* Author: <%= author %>\n*/\n';
 
 // src and dist paths
 const paths = {

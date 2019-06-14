@@ -1,6 +1,6 @@
 /*!
 * zeynepjs v1.0.1
-* A light-weight, multi-level jQuery mobile side menu plugin.
+* A light-weight multi-level jQuery side menu plugin.
 *
 * Author: Huseyin Elmas
 */
