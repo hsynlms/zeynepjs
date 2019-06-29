@@ -16,7 +16,12 @@
   },
   "author": "Huseyin Elmas",
   "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/hsynlms/zeynepjs/issues"
+  },
+  "homepage": "https://github.com/hsynlms/zeynepjs#readme",
   "devDependencies": {
+    "chalk": "^2.4.2",
     "del": "^4.1.1",
     "gulp": "^4.0.2",
     "gulp-header": "^2.0.7",
