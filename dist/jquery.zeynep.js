@@ -1,5 +1,5 @@
 /*!
-* zeynepjs v1.0.1
+* zeynepjs v1.0.2
 * A light-weight multi-level jQuery side menu plugin.
 *
 * Author: Huseyin Elmas
@@ -9,7 +9,6 @@
 	var pluginName = 'zeynep';
 	var defaults = {
 		initialized: false,
-		speed: 375,
 		disableTransition: false,
 		width: 295,
 		onLoading: null,
@@ -52,7 +51,7 @@
 		if (options.initialized) return;
 
 		// run onLoading event
-		this.eventController("onLoading");
+		this.eventController('onLoading');
 
 		this.element.css('transform', 'translateX(-' + this.options.width + 'px)');
 		this.element.css('width', this.options.width);
@@ -94,7 +93,7 @@
 		options.initialized = true;
 
 		// run onLoad event
-		this.eventController("onLoad");
+		this.eventController('onLoad');
 	};
 
 	Plugin.prototype.open = function () {
@@ -103,7 +102,7 @@
 		// and this.options
 
 		// run onOpening event
-		this.eventController("onOpening");
+		this.eventController('onOpening');
 
 		var html = $('html');
 		var body = $('body');
@@ -116,7 +115,7 @@
 		body.css('left', this.options.width);
 
 		// run onOpened event
-		this.eventController("onOpened");
+		this.eventController('onOpened');
 	};
 
 	Plugin.prototype.close = function (disableEvent) {
@@ -125,7 +124,7 @@
 		// and this.options
 
 		// run onClosing event
-		!disableEvent && this.eventController("onClosing");
+		!disableEvent && this.eventController('onClosing');
 
 		var html = $('html');
 		var body = $('body');
@@ -137,7 +136,7 @@
 		this.options.disableTransition && this.element.add(html).removeClass('no-transition');
 
 		// run onClosed event
-		!disableEvent && this.eventController("onClosed");
+		!disableEvent && this.eventController('onClosed');
 	};
 
 	Plugin.prototype.unload = function () {
@@ -146,7 +145,7 @@
 		// and this.options
 
 		// run onUnloading event
-		this.eventController("onUnloading");
+		this.eventController('onUnloading');
 
 		// close the menu
 		this.close(true);
@@ -155,41 +154,51 @@
 		this.element.find('.submenu.opened').removeClass('opened');
 		this.element.find('.submenu').removeAttr('style');
 
-		$.removeData(this.element, 'plugin_' + pluginName);
+		// reset left css style for body element
+		$('body').css('left', '');
+
+		this.element.removeData(pluginName);
 
 		// run onUnloaded event
-		this.eventController("onUnloaded");
+		this.eventController('onUnloaded');
+
+		// reset options
+		this.options = this._defaults;
+
+		// delete zeynep
+		zeynep = null;
+		delete zeynep;
 	};
 
 	// event executor
 	var eventController = function (type) {
 		// even type validation
-		if (!this.options[type] || typeof this.options[type] !== "function") return;
+		if (!this.options[type] || typeof this.options[type] !== 'function') return;
 
 		// execute the event if it is provided
 		switch (type) {
-			case "onLoading":
+			case 'onLoading':
 				this.options.onLoading.call();
 				break;
-			case "onLoad":
+			case 'onLoad':
 				this.options.onLoad.call();
 				break;
-			case "onOpening":
+			case 'onOpening':
 				this.options.onOpening.call();
 				break;
-			case "onOpened":
+			case 'onOpened':
 				this.options.onOpened.call();
 				break;
-			case "onClosing":
+			case 'onClosing':
 				this.options.onClosing.call();
 				break;
-			case "onClosed":
+			case 'onClosed':
 				this.options.onClosed.call();
 				break;
-			case "onUnloading":
+			case 'onUnloading':
 				this.options.onUnloading.call();
 				break;
-			case "onUnloaded":
+			case 'onUnloaded':
 				this.options.onUnloaded.call();
 				break;
 		}
@@ -222,9 +231,6 @@
 		var instance = getInstance(zeynep, options);
 
 		return {
-			load: function () {
-				instance.init.apply(instance);
-			},
 			open: function () {
 				instance.open.apply(instance);
 			},
