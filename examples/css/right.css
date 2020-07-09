@@ -1,0 +1,16 @@
+/* right side menu specific styles */
+body {
+  right: 0;
+}
+
+.zeynep-opened body {
+  right: 295px;
+}
+
+.zeynep.right {
+  left: auto;
+  right: 0;
+}
+.zeynep.right:not(.opened) {
+  transform: translateX(100%);
+}

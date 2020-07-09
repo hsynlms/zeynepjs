@@ -1,0 +1,13 @@
+/* right side menu specific styles */
+body {
+  left: 0;
+}
+
+.zeynep-opened body {
+  left: 295px;
+}
+
+.zeynep {
+  right: auto;
+  left: 0;
+}
