@@ -1,34 +1,34 @@
 html {
-	box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 *,
 *:after,
 *:before {
-	box-sizing: inherit;
+  box-sizing: inherit;
 }
 
 body {
-	background-color: #d53c61;
-	color: #ffffff;
-	font-family: 'Montserrat', sans-serif;
-	position: relative;
+  background-color: #d53c61;
+  color: #ffffff;
+  font-family: 'Montserrat', sans-serif;
+  position: relative;
 }
 
 h1 {
-	font-size: 55px;
+  font-size: 55px;
   font-weight: bold;
   line-height: normal;
   letter-spacing: -3px;
   margin-top: 0;
 }
 h1 span {
-	font-weight: 300;
+  font-weight: 300;
 }
 
 .lead {
-	font-size: 16px;
-	line-height: 1.44;
+  font-size: 16px;
+  line-height: 1.44;
   max-width: 260px;
   margin: 0 auto;
   margin-bottom: 25px;
@@ -40,21 +40,21 @@ main {
 }
 
 .btn-open {
-	border: 0;
-	border-radius: 27.5px;
-	box-shadow: 0 2px 14px 0 rgba(0, 0, 0, .05);
-	display: inline-block;
-	font-size: 16px;
-	font-weight: bold;
-	min-width: 150px;
-	outline: 0;
-	padding-bottom: 15px;
-	padding-top: 15px;
+  border: 0;
+  border-radius: 27.5px;
+  box-shadow: 0 2px 14px 0 rgba(0, 0, 0, .05);
+  display: inline-block;
+  font-size: 16px;
+  font-weight: bold;
+  min-width: 150px;
+  outline: 0;
+  padding-bottom: 15px;
+  padding-top: 15px;
   cursor: pointer;
   margin: 0 6px;
 }
 .btn-open:active {
-	box-shadow: inset 0 3px 5px 0px rgba(0, 0, 0, .1);
+  box-shadow: inset 0 3px 5px 0px rgba(0, 0, 0, .1);
 }
 
 .btn-open.first {
@@ -68,96 +68,96 @@ main {
 
 /* zeynepjs menu styles */
 .zeynep {
-	background-color: #ffffff;
-	color: #404143;
+  background-color: #ffffff;
+  color: #404143;
 }
 
 .zeynep ul {
   list-style-type: none;
-	padding: 0;
-	padding-left: 20px;
-	-webkit-overflow-scrolling: touch;
+  padding: 0;
+  padding-left: 20px;
+  -webkit-overflow-scrolling: touch;
 }
 .zeynep ul > li {
-	display: block;
+  display: block;
 }
 
 .zeynep ul > li > a {
-	color: inherit;
-	display: block;
-	font-size: 14px;
-	font-weight: bold;
-	padding: 18px 20px;
-	text-decoration: none;
-	transition: all 150ms;
+  color: inherit;
+  display: block;
+  font-size: 14px;
+  font-weight: bold;
+  padding: 18px 20px;
+  text-decoration: none;
+  transition: all 150ms;
 }
 .zeynep ul > li > a:hover {
-	background-color: #efefef;
-	border-radius: 3px;
+  background-color: #efefef;
+  border-radius: 3px;
 }
 
 .zeynep ul > li:not(:last-child) > a {
-	border-bottom: 1px solid #efefef;
+  border-bottom: 1px solid #efefef;
 }
 
 .zeynep ul > li.has-submenu > a {
-	background-image: url("../images/submenu-arrow.svg");
-	background-position: right 20px center;
-	background-repeat: no-repeat;
-	background-size: 8px 14px;
+  background-image: url("../images/submenu-arrow.svg");
+  background-position: right 20px center;
+  background-repeat: no-repeat;
+  background-size: 8px 14px;
 }
 
 .zeynep ul > li.has-submenu > a:hover {
-	background-image: url("../images/submenu-arrow-active.svg");
+  background-image: url("../images/submenu-arrow-active.svg");
 }
 
 /* zeynepjs submenu styles */
 .zeynep .submenu {
-	background-color: #ffffff;
+  background-color: #ffffff;
 }
 
 .zeynep .submenu-header {
-	background-image: url("../images/menu-back.svg");
-	background-position: left 20px center;
-	background-repeat: no-repeat;
-	background-size: 8px 14px;
-	border-bottom: solid 1px #efefef;
-	cursor: pointer;
-	position: relative;
+  background-image: url("../images/menu-back.svg");
+  background-position: left 20px center;
+  background-repeat: no-repeat;
+  background-size: 8px 14px;
+  border-bottom: solid 1px #efefef;
+  cursor: pointer;
+  position: relative;
 }
 
 .zeynep .submenu-header > a {
-	color: inherit;
-	display: block;
-	font-size: 14px;
-	font-weight: bold;
-	padding: 18px 20px;
-	padding-left: 40px;
-	text-decoration: none;
+  color: inherit;
+  display: block;
+  font-size: 14px;
+  font-weight: bold;
+  padding: 18px 20px;
+  padding-left: 40px;
+  text-decoration: none;
 }
 
 .zeynep .submenu-header > a:before {
-	background-image: url("../images/submenu-arrow.svg");
-	background-position: right 20px center;
-	background-repeat: no-repeat;
-	background-size: 8px 14px;
-	content: "";
-	height: 100%;
-	left: 26px;
-	position: absolute;
-	top: 0;
-	transform: rotate(-180deg);
-	width: 20px;
+  background-image: url("../images/submenu-arrow.svg");
+  background-position: right 20px center;
+  background-repeat: no-repeat;
+  background-size: 8px 14px;
+  content: "";
+  height: 100%;
+  left: 26px;
+  position: absolute;
+  top: 0;
+  transform: rotate(-180deg);
+  width: 20px;
 }
 
 .zeynep .submenu > label {
-	color: #e77691;
-	display: block;
-	font-size: 13px;
-	font-weight: bold;
-	margin-bottom: 8px;
-	margin-top: 19px;
-	opacity: .5;
-	padding-left: 40px;
-	width: 100%;
+  color: #e77691;
+  display: block;
+  font-size: 13px;
+  font-weight: bold;
+  margin-bottom: 8px;
+  margin-top: 19px;
+  opacity: .5;
+  padding-left: 40px;
+  width: 100%;
 }
