@@ -1,239 +1,173 @@
-(function ($) {
-	// create the defaults
-	var pluginName = 'zeynep';
-	var defaults = {
-		initialized: false,
-		disableTransition: false,
-		width: 295,
-		onLoading: null,
-		onLoad: null,
-		onOpening: null,
-		onOpened: null,
-		onClosing: null,
-		onClosed: null,
-		onUnloading: null,
-		onUnloaded: null
-	};
+(function ($, pluginName) {
+  // plugin defaults
+  var defaults = {
+    htmlClass: true
+  }
 
-	// the actual plugin constructor
-	function Plugin(element, options) {
-		this.element = element;
+  // plugin constructor
+  function Plugin (element, options) {
+    this.element = element
+    this.eventController = eventController
 
-		// jQuery has an extend method that merges the 
-		// contents of two or more objects, storing the 
-		// result in the first object. the first object 
-		// is generally empty because we don't want to alter 
-		// the default options for future instances of the plugin
-		this.options = $.extend({}, defaults, options);
-		this._defaults = defaults;
-		this._name = pluginName;
-		this.eventController = eventController;
+    // merge defaults with options
+    this.options = $.extend({}, defaults, options)
+    this.options.initialized = false
 
-		this.init();
-	}
+    // initialize the plugin
+    this.init()
+  }
 
-	Plugin.prototype.init = function () {
-		// place initialization logic here
-		// you already have access to the DOM element and
-		// the options via the instance, e.g. this.element 
-		// and this.options
-		var zeynep = this.element;
-		var submenuTriggers = zeynep.find('[data-submenu]');
-		var options = this.options;
+  Plugin.prototype.init = function () {
+    var zeynep = this.element
+    var options = this.options
 
-		// exit if already initialized
-		if (options.initialized) return;
+    // exit if already initialized
+    if (options.initialized === true) return
 
-		// run onLoading event
-		this.eventController('onLoading');
+    // loading event
+    this.eventController('loading')
 
-		this.element.css('transform', 'translateX(-' + this.options.width + 'px)');
-		this.element.css('width', this.options.width);
+    // handle subMenu links/triggers click events
+    zeynep.find('[data-submenu]').on('click', function (event) {
+      event.preventDefault()
 
-		submenuTriggers.each(function () {
-			var _this = $(this);
-			var subMenuId = _this.attr('data-submenu');
-			var submenuEl = $('#' + subMenuId);
+      var self = $(this)
+      var subMenuId = self.attr('data-submenu')
+      var subMenuEl = $('#' + subMenuId)
 
-			if (!submenuEl.length) return true;
+      // if subMenu not found, do nothing
+      if (!subMenuEl.length) return
 
-			_this.on('click', function (event) {
-				var scrollTop = submenuEl.parents('.submenu:first').scrollTop() || 0;
+      // open subMenu
+      zeynep.find('.submenu.current').removeClass('current')
+      subMenuEl.addClass('opened current')
+      !zeynep.hasClass('submenu-opened') && zeynep.addClass('submenu-opened')
+    })
 
-				if (!zeynep.find('.submenu.opened').length) {
-					zeynep.css('overflow-y', 'hidden');
+    // handle subMenu closers click events
+    zeynep.find('[data-submenu-close]').on('click', function (event) {
+      event.preventDefault()
 
-					scrollTop = zeynep.scrollTop();
-				}
+      var self = $(this)
+      var subMenuId = self.attr('data-submenu-close')
+      var subMenuEl = $('#' + subMenuId)
 
-				submenuEl.parents('.submenu:first').css('overflow-y', 'hidden');
-				submenuEl.scrollTop(0);
-				submenuEl.css('top', scrollTop);
-				submenuEl.css('transform', 'translateX(0)');
-				submenuEl.addClass('opened');
-			});
+      // if subMenu not found, do nothing
+      if (!subMenuEl.length) return
 
-			submenuEl.find('[data-submenu-close="' + subMenuId + '"]').on('click', function (event) {
-				submenuEl.parents('.submenu:first').css('overflow-y', '');
-				submenuEl.css('transform', 'translateX(' + options.width + 'px)');
-				submenuEl.removeClass('opened');
+      // close subMenu
+      subMenuEl.removeClass('opened current')
+      zeynep.find('.submenu.opened:last').addClass('current')
+      !zeynep.find('.submenu.opened').length && zeynep.removeClass('submenu-opened')
 
-				if (!zeynep.find('.submenu.opened').length) {
-					zeynep.css('overflow-y', '');
-				}
-			});
-		});
+      subMenuEl.scrollTop(0)
+    })
 
-		options.initialized = true;
+    // onLoad event
+    this.eventController('load')
 
-		// run onLoad event
-		this.eventController('onLoad');
-	};
+    // zeynepjs successfully initialized
+    this.options.htmlClass && !$('html').hasClass('zeynep-initialized') && $('html').addClass('zeynep-initialized')
 
-	Plugin.prototype.open = function () {
-		// you already have access to the DOM element and
-		// the options via the instance, e.g. this.element 
-		// and this.options
+    options.initialized = true
+  }
 
-		// run onOpening event
-		this.eventController('onOpening');
+  Plugin.prototype.open = function () {
+    // opening event
+    this.eventController('opening')
 
-		var html = $('html');
-		var body = $('body');
+    // zeynepjs menu is opened
+    this.element.addClass('opened')
+    this.options.htmlClass && $('html').addClass('zeynep-opened')
 
-		this.options.disableTransition && this.element.add(html).addClass('no-transition');
+    // opened event
+    this.eventController('opened')
+  }
 
-		html.addClass('zeynep-opened');
-		
-		this.element.css('transform', 'translateX(0)');
-		body.css('left', this.options.width);
+  Plugin.prototype.close = function (disableEvent) {
+    // closing event
+    !disableEvent && this.eventController('closing')
 
-		// run onOpened event
-		this.eventController('onOpened');
-	};
+    // zeynepjs menu is opened
+    this.element.removeClass('opened')
+    this.options.htmlClass && $('html').removeClass('zeynep-opened')
 
-	Plugin.prototype.close = function (disableEvent) {
-		// you already have access to the DOM element and
-		// the options via the instance, e.g. this.element 
-		// and this.options
+    // closed event
+    !disableEvent && this.eventController('closed')
+  }
 
-		// run onClosing event
-		!disableEvent && this.eventController('onClosing');
+  Plugin.prototype.destroy = function () {
+    // destroying event
+    this.eventController('destroying')
 
-		var html = $('html');
-		var body = $('body');
+    // close the menu
+    this.close(true)
 
-		html.removeClass('zeynep-opened');
-		body.css('left', 0);
-		this.element.css('transform', 'translateX(-' + this.options.width + 'px)');
+    // close submenus
+    this.element.find('.submenu.opened').removeClass('opened')
 
-		this.options.disableTransition && this.element.add(html).removeClass('no-transition');
+    // clear/remove the instance on the element
+    this.element.removeData(pluginName)
 
-		// run onClosed event
-		!disableEvent && this.eventController('onClosed');
-	};
+    // destroyed event
+    this.eventController('destroyed')
 
-	Plugin.prototype.unload = function () {
-		// you already have access to the DOM element and
-		// the options via the instance, e.g. this.element 
-		// and this.options
+    // reset options
+    this.options = defaults
 
-		// run onUnloading event
-		this.eventController('onUnloading');
+    this.options.htmlClass && $('html').removeClass('zeynep-initialized')
+  }
 
-		// close the menu
-		this.close(true);
+  Plugin.prototype.on = function (name, handler) {
+    eventBinder.call(this, name, handler)
+  }
 
-		this.element.removeAttr('style');
-		this.element.find('.submenu.opened').removeClass('opened');
-		this.element.find('.submenu').removeAttr('style');
+  // event executor
+  var eventController = function (type) {
+    // validations
+    if (!this.options[type]) return
+    if (typeof this.options[type] !== 'function') throw Error('event handler must be a function: ' + type)
 
-		// reset left css style for body element
-		$('body').css('left', '');
+    // call the event
+    this.options[type].call(this, this.element, this.options)
+  }
 
-		this.element.removeData(pluginName);
+  // get the element instance
+  var getInstance = function (element, options) {
+    var instance = null
 
-		// run onUnloaded event
-		this.eventController('onUnloaded');
+    if (!element.data(pluginName)) {
+      // zeynepjs is not initialized for the element
+      // crceate a new instance
+      instance = new Plugin(element, options || {})
 
-		// reset options
-		this.options = this._defaults;
+      // put the instance on element
+      element.data(pluginName, instance)
+    } else {
+      // return the already initialized instance
+      instance = element.data(pluginName)
+    }
 
-		// delete zeynep
-		zeynep = null;
-		delete zeynep;
-	};
+    return instance
+  }
 
-	// event executor
-	var eventController = function (type) {
-		// even type validation
-		if (!this.options[type] || typeof this.options[type] !== 'function') return;
+  // dynamically event binder
+  var eventBinder = function (name, handler) {
+    // validations
+    if (typeof name !== 'string') throw Error('event name is expected to be a string but got: ' + typeof name)
+    if (typeof handler !== 'function') throw Error('event handler is not a function for: ' + name)
 
-		// execute the event if it is provided
-		switch (type) {
-			case 'onLoading':
-				this.options.onLoading.call();
-				break;
-			case 'onLoad':
-				this.options.onLoad.call();
-				break;
-			case 'onOpening':
-				this.options.onOpening.call();
-				break;
-			case 'onOpened':
-				this.options.onOpened.call();
-				break;
-			case 'onClosing':
-				this.options.onClosing.call();
-				break;
-			case 'onClosed':
-				this.options.onClosed.call();
-				break;
-			case 'onUnloading':
-				this.options.onUnloading.call();
-				break;
-			case 'onUnloaded':
-				this.options.onUnloaded.call();
-				break;
-		}
-	};
+    // update options
+    this.options[name] = handler
+  }
 
-	// get the element instance
-	var getInstance = function (element, options) {
-		var _instance = null;
-		var _options = options || {};
+  // a really lightweight plugin wrapper around the constructor
+  // preventing against multiple instantiations
+  $.fn[pluginName] = function (options) {
+    // get a zeynepjs instance
+    var instance = getInstance($(this[0]), options)
 
-		if (!element.data(pluginName)) {
-			_instance = new Plugin(element, _options);
-
-			element.data(pluginName, _instance);
-		} else {
-			_instance = element.data(pluginName);
-		}
-
-		return _instance;
-	};
-	
-	// a really lightweight plugin wrapper around the constructor, 
-	// preventing against multiple instantiations
-	$.fn[pluginName] = function (options) {
-		var zeynep = this;
-
-		// prevent multiple load
-		if (zeynep.length > 1) return null;
-
-		var instance = getInstance(zeynep, options);
-
-		return {
-			open: function () {
-				instance.open.apply(instance);
-			},
-			close: function () {
-				instance.close.apply(instance);
-			},
-			unload: function () {
-				instance.unload.apply(instance);
-			}
-		};
-	}
-})(window.jQuery);
+    // return the instance
+    return instance
+  }
+})(window.jQuery, 'zeynep')
