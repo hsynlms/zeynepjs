@@ -116,6 +116,10 @@
     this.options = defaults
 
     this.options.htmlClass && $('html').removeClass('zeynep-initialized')
+
+    delete this.element
+    delete this.options
+    delete this.eventController
   }
 
   Plugin.prototype.on = function (name, handler) {
