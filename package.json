@@ -1,6 +1,6 @@
 {
   "name": "zeynepjs",
-  "version": "1.0.2",
+  "version": "2.0.0",
   "description": "a lightweight, multi-level jQuery side menu plugin",
   "main": "index.js",
   "directories": {

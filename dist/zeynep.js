@@ -1,5 +1,5 @@
 /*!
-* zeynepjs v1.0.2
+* zeynepjs v2.0.0
 * A light-weight multi-level jQuery side menu plugin.
 *
 * Author: Huseyin ELMAS
