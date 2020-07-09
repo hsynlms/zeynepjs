@@ -5,9 +5,7 @@
 
 .zeynep {
   top: 0;
-  left: 0;
   bottom: 0;
-  width: 295px;
   position: fixed;
   overflow: hidden;
   overflow-y: auto;
@@ -32,10 +30,6 @@ html:not(.zeynep-no-transition) body,
 	position: fixed;
 	z-index: 1010;
 	background-color: rgba(0, 0, 0, .42);
-}
-
-.zeynep-opened body {
-  margin-left: 295px;
 }
 
 .zeynep-opened .zeynep-overlay {
