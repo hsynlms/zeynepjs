@@ -14,7 +14,14 @@
     "type": "git",
     "url": "git+https://github.com/hsynlms/zeynepjs.git"
   },
-  "author": "Huseyin Elmas",
+  "keywords": [
+    "jquery",
+    "navigation",
+    "menu",
+    "side-menu",
+    "multi-level-menu"
+  ],
+  "author": "Huseyin ELMAS",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/hsynlms/zeynepjs/issues"
