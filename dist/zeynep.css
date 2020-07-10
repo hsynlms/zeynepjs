@@ -13,6 +13,7 @@
   overflow:hidden;
   -webkit-overflow-scrolling:touch;
   overflow-y:auto;
+  pointer-events:none;
   position:fixed;
   top:0;
   transform:translateX(-100%);
@@ -41,6 +42,7 @@ html:not(.zeynep-no-transition) body,
 }
 
 .zeynep.opened{
+  pointer-events:auto;
   transform:translateX(0px);
 }
 
