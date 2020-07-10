@@ -166,16 +166,10 @@
         // init zeynepjs side menu
         var zeynep = $('.zeynep').zeynep({
           opened: function () {
-            // disable main wrapper element clicks on any its children element
-            $('body main').attr('style', 'pointer-events: none;')
-            
             // log
             console.log('the side menu opened')
           },
           closed: function () {
-            // enable main wrapper element clicks on any its children element
-            $('body main').attr('style', '')
-            
             // log
             console.log('the side menu closed')
           }
