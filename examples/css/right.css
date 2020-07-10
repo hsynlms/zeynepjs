@@ -4,7 +4,7 @@ body {
 }
 
 .zeynep-opened body {
-  right: 295px;
+  overflow: hidden;
 }
 
 .zeynep.right {

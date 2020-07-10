@@ -2,17 +2,21 @@ html {
   box-sizing: border-box;
 }
 
-*,
-*:after,
-*:before {
-  box-sizing: inherit;
-}
-
 body {
   background-color: #d53c61;
   color: #ffffff;
   font-family: 'Montserrat', sans-serif;
-  position: relative;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+*,
+*:after,
+*:before {
+  box-sizing: inherit;
 }
 
 h1 {
@@ -115,6 +119,7 @@ main {
 /* zeynepjs submenu styles */
 .zeynep .submenu {
   background-color: #ffffff;
+  left: 295px;
 }
 
 .zeynep .submenu-header {
