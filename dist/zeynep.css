@@ -4,10 +4,6 @@
 *
 * Author: Huseyin ELMAS
 */
-.zeynep-initialized{
-  overflow-x:hidden;
-}
-
 .zeynep{
   bottom:0;
   overflow:hidden;
@@ -20,25 +16,24 @@
   z-index:1011;
 }
 
-html:not(.zeynep-no-transition) body,
 .zeynep:not(.no-transition),
 .zeynep .submenu:not(.no-transition){
-	transition:all 375ms;
+  transition:all 250ms;
 }
 
 .zeynep-overlay{
-	background-color:rgba(0, 0, 0, .42);
-	bottom:0;
-	display:none;
-	left:0;
-	position:fixed;
-	right:0;
-	top:0;
-	z-index:1010;
+  background-color:rgba(0, 0, 0, .42);
+  bottom:0;
+  display:none;
+  left:0;
+  position:fixed;
+  right:0;
+  top:0;
+  z-index:1010;
 }
 
 .zeynep-opened .zeynep-overlay{
-	display:block;
+  display:block;
 }
 
 .zeynep.opened{
@@ -51,18 +46,20 @@ html:not(.zeynep-no-transition) body,
 }
 
 .zeynep .submenu{
-	bottom:0;
-	left:100%;
-	min-height:100%;
-	overflow:hidden;
-	overflow-y:auto;
-	position:fixed;
+  bottom:0;
+  min-height:100%;
+  overflow:hidden;
+  -webkit-overflow-scrolling:touch;
+  overflow-y:auto;
+  pointer-events:none;
+  position:fixed;
   top:0;
-	width:100%;
+  width:100%;
 }
 
 .zeynep .submenu.opened{
   left:0;
+  pointer-events:auto;
 }
 
 .zeynep .submenu.opened:not(.current){
