@@ -30,7 +30,7 @@
   },
   "homepage": "https://github.com/hsynlms/zeynepjs#readme",
   "devDependencies": {
-    "autoprefixer": "^9.8.4",
+    "autoprefixer": "^9.8.6",
     "chalk": "^4.1.0",
     "del": "^5.1.0",
     "gulp": "^4.0.2",
