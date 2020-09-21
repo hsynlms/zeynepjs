@@ -52,6 +52,11 @@ zeynep.on('closing', function () {
 // destroys the menu
 zeynep.destroy()
 ```
+## Adding to webpack
+Once added to your project, you can import the module to use it:
+```js
+import 'zeynepjs';
+```
 
 ## Contribution
 Contributions and pull requests are kindly welcomed!
