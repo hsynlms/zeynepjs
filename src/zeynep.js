@@ -42,6 +42,9 @@
       zeynep.find('.submenu.current').removeClass('current')
       subMenuEl.addClass('opened current')
       !zeynep.hasClass('submenu-opened') && zeynep.addClass('submenu-opened')
+
+      // scroll to top before submenu transition
+      zeynep.scrollTop(0)
     })
 
     // handle subMenu closers click events
