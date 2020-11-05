@@ -94,34 +94,29 @@
   }
 
   Plugin.prototype.open = function () {
-    // opening event
     this.eventController('opening')
 
     // zeynepjs menu is opened
     this.element.addClass('opened')
     this.options.htmlClass && $('html').addClass('zeynep-opened')
 
-    // opened event
     this.eventController('opened')
   }
 
   Plugin.prototype.close = function (disableEvent) {
-    // closing event
     !disableEvent && this.eventController('closing')
 
     // zeynepjs menu is opened
     this.element.removeClass('opened')
     this.options.htmlClass && $('html').removeClass('zeynep-opened')
 
-    // closed event
     !disableEvent && this.eventController('closed')
   }
 
   Plugin.prototype.destroy = function () {
-    // destroying event
     this.eventController('destroying')
 
-    // close the menu
+    // close the menu without firing any event
     this.close(true)
 
     // close submenus
@@ -130,7 +125,6 @@
     // clear/remove the instance on the element
     this.element.removeData(pluginName)
 
-    // destroyed event
     this.eventController('destroyed')
 
     // reset options
@@ -147,7 +141,6 @@
     eventBinder.call(this, name, handler)
   }
 
-  // event executor
   var eventController = function (type, details) {
     // validations
     if (!this.options[type]) return
@@ -157,7 +150,6 @@
     this.options[type].call(this, this.element, this.options, details)
   }
 
-  // get the element instance
   var getInstance = function (element, options) {
     var instance = null
 
@@ -176,7 +168,6 @@
     return instance
   }
 
-  // dynamically event binder
   var eventBinder = function (name, handler) {
     // validations
     if (typeof name !== 'string') throw Error('event name is expected to be a string but got: ' + typeof name)
