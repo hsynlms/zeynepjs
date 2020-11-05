@@ -7,7 +7,7 @@ const del = require('del')
 const sourcemaps = require('gulp-sourcemaps')
 const pkg = require('./package.json')
 
-const tpl = '/*!\n* zeynepjs v<%= version %>\n* A light-weight multi-level jQuery side menu plugin.\n*\n* Author: <%= author %>\n*/\n'
+const tpl = '/*!\n* <%= name %> v<%= version %>\n* A light-weight multi-level jQuery side menu plugin.\n* It\'s fully customizable and is compatible with modern browsers such as Google Chrome, Mozilla Firefox, Safari, Edge and Internet Explorer\n* MIT License\n* by <%= author %>\n*/\n'
 
 // src and dist paths
 const paths = {
@@ -34,24 +34,12 @@ gulp.task('script', function () {
   return gulp.src(paths.srcJavascript)
     .pipe(sourcemaps.init())
     .pipe(
-      header(
-        tpl,
-        {
-          version: pkg.version,
-          author: pkg.author
-        }
-      )
+      header(tpl, pkg)
     )
     .pipe(gulp.dest(paths.dist))
     .pipe(uglify())
     .pipe(
-      header(
-        tpl,
-        {
-          version: pkg.version,
-          author: pkg.author
-        }
-      )
+      header(tpl, pkg)
     )
     .pipe(rename({ suffix: '.min' }))
     .pipe(sourcemaps.write('.'))
@@ -68,13 +56,7 @@ gulp.task('style', function () {
   return gulp.src(paths.srcCss)
     .pipe(sourcemaps.init())
     .pipe(
-      header(
-        tpl,
-        {
-          version: pkg.version,
-          author: pkg.author
-        }
-      )
+      header(tpl, pkg)
     )
     .pipe(
       require('gulp-postcss')([
