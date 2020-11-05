@@ -94,23 +94,29 @@
   }
 
   Plugin.prototype.open = function () {
-    this.eventController('opening')
+    this.eventController(
+      'opening',
+      { subMenu: false }
+    )
 
     // zeynepjs menu is opened
     this.element.addClass('opened')
     this.options.htmlClass && $('html').addClass('zeynep-opened')
 
-    this.eventController('opened')
+    this.eventController(
+      'opened',
+      { subMenu: false }
+    )
   }
 
   Plugin.prototype.close = function (disableEvent) {
-    !disableEvent && this.eventController('closing')
+    !disableEvent && this.eventController('closing', { subMenu: false })
 
     // zeynepjs menu is opened
     this.element.removeClass('opened')
     this.options.htmlClass && $('html').removeClass('zeynep-opened')
 
-    !disableEvent && this.eventController('closed')
+    !disableEvent && this.eventController('closed', { subMenu: false })
   }
 
   Plugin.prototype.destroy = function () {
