@@ -3,30 +3,13 @@
 
 [![NPM](https://nodei.co/npm/zeynepjs.png)](https://nodei.co/npm/zeynepjs/)
 
-zeynepjs can be initialized for any existing HTML element and supports multi-level nested submenus. It's customizable by CSS and options.
-
-**Note:** There are a lot of breaking changes so `v2.x` is not compatible with `v1.x`.
+`zeynepjs` is a light-weight multi-level jQuery side menu plugin. It's fully customizable and is compatible with modern browsers such as Google Chrome, Mozilla Firefox, Safari, Edge and Internet Explorer.
 
 ## Options
 
 | Option            | Type     | Default | Description  |
 | ---               | ---      | ---     | ---          |
-| htmlClass         | boolean  | true    | If `true` zeynepjs will add some classes to `<html>` element like `zeynep-initialized`, `zeynep-opened` |
-
-## Events
-
-| Name              | Description                            |
-| ---               | ---                                    |
-| loading           | Fired when the menu is being loaded    |
-| load              | Fired when the menu is loaded          |
-| opening           | Fired when the menu is being opened    |
-| opened            | Fired when the menu is opened          |
-| closing           | Fired when the menu is being closed    |
-| closed            | Fired when the menu is closed          |
-| destroying        | Fired when the menu is being destroyed |
-| destroyed         | Fired when the menu is destroyed       |
-
-> Events can also be defined in options.
+| htmlClass         | boolean  | true    | If `true` zeynepjs will add some classes to `<html/>` element like `zeynep-initialized`, `zeynep-opened` |
 
 ## Usage
 
@@ -52,11 +35,89 @@ zeynep.on('closing', function () {
 // destroys the menu
 zeynep.destroy()
 ```
-## Adding to webpack
-Once added to your project, you can import the module to use it:
+
+## Using with Webpack
+Once the library installed in your project, just import it:
+
 ```js
-import 'zeynepjs';
+import 'zeynepjs'
 ```
+
+## Events
+
+> Events can also be defined in options.
+
+### `loading(element, options)`
+
+Fired when the menu is being loaded. This event cannot be defined dynamically. It needs to be defined in options.
+
+`element` is the element that zeynepjs is being loaded on.
+
+`options` is the initialized zeynepjs instance options.
+
+### `load(element, options)`
+
+Fired when the menu is loaded. This event cannot be defined dynamically. It needs to be defined in options.
+
+`element` is the element that zeynepjs has been loaded on.
+
+`options` is the initialized zeynepjs instance options.
+
+### `opening(element, options, details)`
+
+Fired when the menu or a sub-menu is being opened.
+
+`element` is the zeynepjs instance element.
+
+`options` is the initialized zeynepjs instance options.
+
+`details` contains a flag which indicates the item that is being opened is the menu or a sub-menu and the sub-menu DOM Element ID.
+
+### `opened(element, options, details)`
+
+Fired when the menu or a sub-menu is opened.
+
+`element` is the zeynepjs instance element.
+
+`options` is the initialized zeynepjs instance options.
+
+`details` contains a flag which indicates the opened item is the menu or a sub-menu and the opened sub-menu DOM Element ID.
+
+### `closing(element, options, details)`
+
+Fired when the menu or a sub-menu is being closed.
+
+`element` is the zeynepjs instance element.
+
+`options` is the initialized zeynepjs instance options.
+
+`details` contains a flag which indicates the item that is being closing is the menu or a sub-menu and the sub-menu DOM Element ID.
+
+### `closed(element, options, details)`
+
+Fired when the menu or a sub-menu is closed.
+
+`element` is the zeynepjs instance element.
+
+`options` is the initialized zeynepjs instance options.
+
+`details` contains a flag which indicates the closed item is the menu or a sub-menu and the closed sub-menu DOM Element ID.
+
+### `destroying(element, options)`
+
+Fired when the menu is being destroyed.
+
+`element` is the zeynepjs instance element.
+
+`options` is the zeynepjs instance options that is being destroyed.
+
+### `destroyed(element, options)`
+
+Fired when the menu is destroyed.
+
+`element` is the destroyed zeynepjs instance element.
+
+`options` is the destroyed zeynepjs instance options.
 
 ## Contribution
 Contributions and pull requests are kindly welcomed!
