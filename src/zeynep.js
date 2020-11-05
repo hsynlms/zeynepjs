@@ -20,12 +20,12 @@
   Plugin.prototype.init = function () {
     var zeynep = this.element
     var options = this.options
+    var eventController = this.eventController.bind(this)
 
     // exit if already initialized
     if (options.initialized === true) return
 
-    // loading event
-    this.eventController('loading')
+    eventController('loading')
 
     // handle subMenu links/triggers click events
     zeynep.find('[data-submenu]').on('click', function (event) {
@@ -38,13 +38,22 @@
       // if subMenu not found, do nothing
       if (!subMenuEl.length) return
 
-      // open subMenu
+      var eventDetails = {
+        subMenu: true,
+        menuId: subMenuId
+      }
+
+      eventController('opening', eventDetails)
+
+      // open the subMenu
       zeynep.find('.submenu.current').removeClass('current')
       subMenuEl.addClass('opened current')
       !zeynep.hasClass('submenu-opened') && zeynep.addClass('submenu-opened')
 
       // scroll to top before submenu transition
       zeynep.scrollTop(0)
+
+      eventController('opened', eventDetails)
     })
 
     // handle subMenu closers click events
@@ -58,16 +67,25 @@
       // if subMenu not found, do nothing
       if (!subMenuEl.length) return
 
+      var eventDetails = {
+        subMenu: true,
+        menuId: subMenuId
+      }
+
+      eventController('closing', eventDetails)
+
       // close subMenu
       subMenuEl.removeClass('opened current')
       zeynep.find('.submenu.opened:last').addClass('current')
       !zeynep.find('.submenu.opened').length && zeynep.removeClass('submenu-opened')
 
+      // scroll to top between submenu transitions
       subMenuEl.scrollTop(0)
+
+      eventController('closed', eventDetails)
     })
 
-    // onLoad event
-    this.eventController('load')
+    eventController('load')
 
     // zeynepjs successfully initialized
     this.options.htmlClass && !$('html').hasClass('zeynep-initialized') && $('html').addClass('zeynep-initialized')
@@ -130,13 +148,13 @@
   }
 
   // event executor
-  var eventController = function (type) {
+  var eventController = function (type, details) {
     // validations
     if (!this.options[type]) return
     if (typeof this.options[type] !== 'function') throw Error('event handler must be a function: ' + type)
 
     // call the event
-    this.options[type].call(this, this.element, this.options)
+    this.options[type].call(this, this.element, this.options, details)
   }
 
   // get the element instance
