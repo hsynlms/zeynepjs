@@ -1,8 +1,9 @@
 /*!
-* zeynepjs v2.0.2
+* zeynepjs v2.1.0
 * A light-weight multi-level jQuery side menu plugin.
-*
-* Author: Huseyin ELMAS
+* It's fully customizable and is compatible with modern browsers such as Google Chrome, Mozilla Firefox, Safari, Edge and Internet Explorer
+* MIT License
+* by Huseyin ELMAS
 */
 (function ($, pluginName) {
   // plugin defaults
@@ -26,12 +27,12 @@
   Plugin.prototype.init = function () {
     var zeynep = this.element
     var options = this.options
+    var eventController = this.eventController.bind(this)
 
     // exit if already initialized
     if (options.initialized === true) return
 
-    // loading event
-    this.eventController('loading')
+    eventController('loading')
 
     // handle subMenu links/triggers click events
     zeynep.find('[data-submenu]').on('click', function (event) {
@@ -44,10 +45,22 @@
       // if subMenu not found, do nothing
       if (!subMenuEl.length) return
 
-      // open subMenu
+      var eventDetails = {
+        subMenu: true,
+        menuId: subMenuId
+      }
+
+      eventController('opening', eventDetails)
+
+      // open the subMenu
       zeynep.find('.submenu.current').removeClass('current')
       subMenuEl.addClass('opened current')
       !zeynep.hasClass('submenu-opened') && zeynep.addClass('submenu-opened')
+
+      // scroll to top before submenu transition
+      zeynep.scrollTop(0)
+
+      eventController('opened', eventDetails)
     })
 
     // handle subMenu closers click events
@@ -61,16 +74,25 @@
       // if subMenu not found, do nothing
       if (!subMenuEl.length) return
 
+      var eventDetails = {
+        subMenu: true,
+        menuId: subMenuId
+      }
+
+      eventController('closing', eventDetails)
+
       // close subMenu
       subMenuEl.removeClass('opened current')
       zeynep.find('.submenu.opened:last').addClass('current')
       !zeynep.find('.submenu.opened').length && zeynep.removeClass('submenu-opened')
 
+      // scroll to top between submenu transitions
       subMenuEl.scrollTop(0)
+
+      eventController('closed', eventDetails)
     })
 
-    // onLoad event
-    this.eventController('load')
+    eventController('load')
 
     // zeynepjs successfully initialized
     this.options.htmlClass && !$('html').hasClass('zeynep-initialized') && $('html').addClass('zeynep-initialized')
@@ -79,34 +101,35 @@
   }
 
   Plugin.prototype.open = function () {
-    // opening event
-    this.eventController('opening')
+    this.eventController(
+      'opening',
+      { subMenu: false }
+    )
 
     // zeynepjs menu is opened
     this.element.addClass('opened')
     this.options.htmlClass && $('html').addClass('zeynep-opened')
 
-    // opened event
-    this.eventController('opened')
+    this.eventController(
+      'opened',
+      { subMenu: false }
+    )
   }
 
   Plugin.prototype.close = function (disableEvent) {
-    // closing event
-    !disableEvent && this.eventController('closing')
+    !disableEvent && this.eventController('closing', { subMenu: false })
 
     // zeynepjs menu is opened
     this.element.removeClass('opened')
     this.options.htmlClass && $('html').removeClass('zeynep-opened')
 
-    // closed event
-    !disableEvent && this.eventController('closed')
+    !disableEvent && this.eventController('closed', { subMenu: false })
   }
 
   Plugin.prototype.destroy = function () {
-    // destroying event
     this.eventController('destroying')
 
-    // close the menu
+    // close the menu without firing any event
     this.close(true)
 
     // close submenus
@@ -115,7 +138,6 @@
     // clear/remove the instance on the element
     this.element.removeData(pluginName)
 
-    // destroyed event
     this.eventController('destroyed')
 
     // reset options
@@ -132,17 +154,15 @@
     eventBinder.call(this, name, handler)
   }
 
-  // event executor
-  var eventController = function (type) {
+  var eventController = function (type, details) {
     // validations
     if (!this.options[type]) return
     if (typeof this.options[type] !== 'function') throw Error('event handler must be a function: ' + type)
 
     // call the event
-    this.options[type].call(this, this.element, this.options)
+    this.options[type].call(this, this.element, this.options, details)
   }
 
-  // get the element instance
   var getInstance = function (element, options) {
     var instance = null
 
@@ -161,7 +181,6 @@
     return instance
   }
 
-  // dynamically event binder
   var eventBinder = function (name, handler) {
     // validations
     if (typeof name !== 'string') throw Error('event name is expected to be a string but got: ' + typeof name)
