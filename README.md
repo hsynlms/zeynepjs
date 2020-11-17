@@ -11,38 +11,6 @@
 | ---               | ---      | ---     | ---          |
 | htmlClass         | boolean  | true    | If `true` zeynepjs will add some classes to `<html/>` element like `zeynep-initialized`, `zeynep-opened` |
 
-## Usage
-
-```js
-// initialize zeynepjs and get the instance into a variable
-var zeynep = $('.zeynep').zeynep({
-  load: function (element, options) {
-    console.log('zeynepjs menu is successfully loaded')
-  }
-})
-
-// opens the menu
-zeynep.open()
-
-// closes the menu
-zeynep.close()
-
-// dynamically event binding
-zeynep.on('closing', function () {
-  console.log('guys, the side menu is closing')
-})
-
-// destroys the menu
-zeynep.destroy()
-```
-
-## Using with Webpack
-Once the library installed in your project, just import it:
-
-```js
-import 'zeynepjs'
-```
-
 ## Methods
 
 `zeynepjs` exposes those:
@@ -129,6 +97,38 @@ Fired when the menu is destroyed.
 `element` is the destroyed zeynepjs instance element.
 
 `options` is the destroyed zeynepjs instance options.
+
+## Usage
+
+```js
+// initialize zeynepjs and get the instance into a variable
+var zeynep = $('.zeynep').zeynep({
+  load: function (element, options) {
+    console.log('zeynepjs menu is successfully loaded')
+  }
+})
+
+// opens the menu
+zeynep.open()
+
+// closes the menu
+zeynep.close()
+
+// dynamically event binding
+zeynep.on('closing', function () {
+  console.log('guys, the side menu is closing')
+})
+
+// destroys the menu
+zeynep.destroy()
+```
+
+## Using with Webpack
+Once the library installed in your project, just import it:
+
+```js
+import 'zeynepjs'
+```
 
 ## Contribution
 Contributions and pull requests are kindly welcomed!
