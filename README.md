@@ -43,6 +43,17 @@ Once the library installed in your project, just import it:
 import 'zeynepjs'
 ```
 
+## Methods
+
+`zeynepjs` exposes those:
+
+| Option            | Type     | Parameters                          | Description                                             |
+| ---               | ---      | ---                                 | ---                                                     |
+| on                | function | `event name` and `handler function` | To dynamically event binding                            |
+| open              | function | `options` (optional)                | To open the menu                                        |
+| close             | function | `resetInspector` (optional)         | To close the menu                                       |
+| destroy           | function | `options`                           | To destroy the zeynepjs instance on initialized element |
+
 ## Events
 
 > Events can also be defined in options.
