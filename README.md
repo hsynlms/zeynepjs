@@ -50,9 +50,9 @@ import 'zeynepjs'
 | Option            | Type     | Parameters                          | Description                                             |
 | ---               | ---      | ---                                 | ---                                                     |
 | on                | function | `event name` and `handler function` | To dynamically event binding                            |
-| open              | function | `options` (optional)                | To open the menu                                        |
-| close             | function | `resetInspector` (optional)         | To close the menu                                       |
-| destroy           | function | `options`                           | To destroy the zeynepjs instance on initialized element |
+| open              | function | - | To open the menu                                        |
+| close             | function | `disableEvent` (optional) | To close the menu. If `disableEvent` is passed true, no close event will be fired  |
+| destroy           | function | - | To destroy the zeynepjs instance on initialized element |
 
 ## Events
 
