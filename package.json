@@ -50,7 +50,8 @@
   "standard": {
     "ignore": [
       "/dist/",
-      "/examples/"
+      "/examples/",
+      "/src/zeynep.js"
     ]
   }
 }
