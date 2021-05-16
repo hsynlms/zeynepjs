@@ -41,7 +41,7 @@
     "gulp-rename": "^2.0.0",
     "gulp-sourcemaps": "^3.0.0",
     "gulp-uglify": "^3.0.2",
-    "postcss": "^8.2.13",
+    "postcss": "^8.2.15",
     "postcss-discard-comments": "^5.0.0",
     "postcss-sorting": "^6.0.0",
     "snazzy": "^9.0.0",
