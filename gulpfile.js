@@ -7,9 +7,16 @@ const del = require('del')
 const sourcemaps = require('gulp-sourcemaps')
 const pkg = require('./package.json')
 
-const tpl = '/*!\n* <%= name %> v<%= version %>\n* A light-weight multi-level jQuery side menu plugin.\n* It\'s fully customizable and is compatible with modern browsers such as Google Chrome, Mozilla Firefox, Safari, Edge and Internet Explorer\n* MIT License\n* by <%= author %>\n*/\n'
+const tpl = `
+/*!
+* <%= name %> v<%= version %>
+* A light-weight multi-level jQuery side menu plugin.
+* It's fully customizable and is compatible with modern browsers such as Google Chrome, Mozilla Firefox, Safari, Edge and Internet Explorer
+* MIT License
+* by <%= author %>
+*/
+`.trimStart()
 
-// src and dist paths
 const paths = {
   srcJavascript: './src/*.js',
   srcCss: './src/*.css',
@@ -77,14 +84,7 @@ gulp.task('style', function () {
     )
     .pipe(gulp.dest(paths.dist))
     .pipe(
-      require('gulp-clean-css')({
-        /* format: 'keep-breaks', */
-        level: {
-          1: {
-            specialComments: false
-          }
-        }
-      })
+      require('gulp-clean-css')()
     )
     .pipe(rename({ suffix: '.min' }))
     .pipe(sourcemaps.write('.'))
