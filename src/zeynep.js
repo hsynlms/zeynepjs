@@ -1,19 +1,14 @@
 (function ($, pluginName) {
-  // plugin defaults
   var defaults = {
     htmlClass: true
   }
 
-  // plugin constructor
   function Plugin (element, options) {
     this.element = element
     this.eventController = eventController
-
-    // merge defaults with options
     this.options = $.extend({}, defaults, options)
     this.options.initialized = false
 
-    // initialize the plugin
     this.init()
   }
 
@@ -148,7 +143,6 @@
   }
 
   var eventController = function (type, details) {
-    // validations
     if (!this.options[type]) return
     if (typeof this.options[type] !== 'function') throw Error('event handler must be a function: ' + type)
 
@@ -175,7 +169,6 @@
   }
 
   var eventBinder = function (name, handler) {
-    // validations
     if (typeof name !== 'string') throw Error('event name is expected to be a string but got: ' + typeof name)
     if (typeof handler !== 'function') throw Error('event handler is not a function for: ' + name)
 
@@ -189,7 +182,6 @@
     // get a zeynepjs instance
     var instance = getInstance($(this[0]), options)
 
-    // return the instance
     return instance
   }
 })(window.jQuery, 'zeynep')

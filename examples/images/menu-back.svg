@@ -1,19 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Generator: Adobe Illustrator 23.0.3, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
-<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 viewBox="0 0 7.7 14.2" style="enable-background:new 0 0 7.7 14.2;" xml:space="preserve">
 <style type="text/css">
 	.st0{filter:url(#a);}
 	.st1{fill-rule:evenodd;clip-rule:evenodd;fill:#DADADA;}
 </style>
-<filter  filterUnits="objectBoundingBox" height="123%" id="a" width="155.2%" x="-27.6%" y="-11.5%">
-	<feOffset  dy="2" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
-	<feGaussianBlur  in="shadowOffsetOuter1" result="shadowBlurOuter1" stdDeviation="17"></feGaussianBlur>
-	<feColorMatrix  in="shadowBlurOuter1" result="shadowMatrixOuter1" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.1 0">
+<filter filterUnits="objectBoundingBox" height="123%" id="a" width="155.2%" x="-27.6%" y="-11.5%">
+	<feOffset dy="2" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+	<feGaussianBlur in="shadowOffsetOuter1" result="shadowBlurOuter1" stdDeviation="17"></feGaussianBlur>
+	<feColorMatrix in="shadowBlurOuter1" result="shadowMatrixOuter1" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.1 0">
 		</feColorMatrix>
 	<feMerge>
-		<feMergeNode  in="shadowMatrixOuter1"></feMergeNode>
-		<feMergeNode  in="SourceGraphic"></feMergeNode>
+		<feMergeNode in="shadowMatrixOuter1"></feMergeNode>
+		<feMergeNode in="SourceGraphic"></feMergeNode>
 	</feMerge>
 </filter>
 <g class="st0">
