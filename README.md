@@ -1,26 +1,63 @@
 # zeynepjs
 > A lightweight multi-level jQuery side menu plugin.
 
-[![NPM](https://nodei.co/npm/zeynepjs.png)](https://nodei.co/npm/zeynepjs/)
+[![Downloads](https://img.shields.io/npm/dm/zeynepjs.svg)](https://npmjs.com/zeynepjs)
+[![install size](https://packagephobia.com/badge?p=zeynepjs)](https://packagephobia.com/result?p=zeynepjs)
 
 `zeynepjs` is a light-weight multi-level jQuery side menu plugin. It's fully customizable and is compatible with modern browsers such as Google Chrome, Mozilla Firefox, Safari, Edge and Internet Explorer.
 
+## Install
+```
+$ npm install zeynepjs --save
+```
+
+## Usage
+
+```js
+var zeynep = $('.zeynep').zeynep({
+  load: function (element, options) {
+    console.log('zeynepjs menu is successfully loaded')
+  }
+})
+
+// opens the menu
+zeynep.open()
+
+// closes the menu
+zeynep.close()
+
+// dynamically event binding
+zeynep.on('closing', function () {
+  console.log('guys, the side menu is closing')
+})
+
+// destroys the menu
+zeynep.destroy()
+```
+
+## Using with Webpack
+Once the library installed in your project, just import it:
+
+```js
+import 'zeynepjs'
+```
+
 ## Options
 
-| Option            | Type     | Default | Description  |
-| ---               | ---      | ---     | ---          |
+| Option            | Type     | Default | Description                                                                                              |
+| ---               | ---      | ---     | ---                                                                                                      |
 | htmlClass         | boolean  | true    | If `true` zeynepjs will add some classes to `<html/>` element like `zeynep-initialized`, `zeynep-opened` |
 
 ## Methods
 
 `zeynepjs` exposes those:
 
-| Option            | Type     | Parameters                          | Description                                             |
-| ---               | ---      | ---                                 | ---                                                     |
-| on                | function | `event name` and `handler function` | To dynamically event binding                            |
-| open              | function | - | To open the menu                                        |
-| close             | function | `disableEvent` (optional) | To close the menu. If `disableEvent` is passed true, no close event will be fired  |
-| destroy           | function | - | To destroy the zeynepjs instance on initialized element |
+| Option            | Type     | Parameters                          | Description                                                                       |
+| ---               | ---      | ---                                 | ---                                                                               |
+| on                | function | `event name` and `handler function` | To dynamically event binding                                                      |
+| open              | function | -                                   | To open the menu                                                                  |
+| close             | function | `disableEvent` (optional)           | To close the menu. If `disableEvent` is passed true, no close event will be fired |
+| destroy           | function | -                                   | To destroy the zeynepjs instance on initialized element                           |
 
 ## Events
 
@@ -97,41 +134,3 @@ Fired when the menu is destroyed.
 `element` is the destroyed zeynepjs instance element.
 
 `options` is the destroyed zeynepjs instance options.
-
-## Usage
-
-```js
-// initialize zeynepjs and get the instance into a variable
-var zeynep = $('.zeynep').zeynep({
-  load: function (element, options) {
-    console.log('zeynepjs menu is successfully loaded')
-  }
-})
-
-// opens the menu
-zeynep.open()
-
-// closes the menu
-zeynep.close()
-
-// dynamically event binding
-zeynep.on('closing', function () {
-  console.log('guys, the side menu is closing')
-})
-
-// destroys the menu
-zeynep.destroy()
-```
-
-## Using with Webpack
-Once the library installed in your project, just import it:
-
-```js
-import 'zeynepjs'
-```
-
-## Contribution
-Contributions and pull requests are kindly welcomed!
-
-## License
-This project is licensed under the terms of the [MIT license](https://github.com/hsynlms/zeynepjs/blob/master/LICENSE).
