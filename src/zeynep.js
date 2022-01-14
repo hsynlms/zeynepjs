@@ -46,7 +46,7 @@
       !zeynep.hasClass('submenu-opened') && zeynep.addClass('submenu-opened')
 
       // scroll to top before submenu transition
-      zeynep.get(0).scrollTo(0, 0)
+      zeynep[0].scrollTo({top: 0})
 
       eventController('opened', eventDetails)
     })
@@ -71,11 +71,11 @@
 
       // close subMenu
       subMenuEl.removeClass('opened current')
-      zeynep.find('.submenu.opened:last-child').addClass('current')
+      zeynep.find('.submenu.opened').last().addClass('current')
       !zeynep.find('.submenu.opened').length && zeynep.removeClass('submenu-opened')
 
       // scroll to top between submenu transitions
-      subMenuEl.get(0).scrollTo(0, 0)
+      subMenuEl[0].scrollTo({top: 0})
 
       eventController('closed', eventDetails)
     })
@@ -184,4 +184,4 @@
 
     return instance
   }
-})(window.jQuery, 'zeynep')
+})(window.jQuery || window.cash, 'zeynep')
