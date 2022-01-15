@@ -31,21 +31,21 @@
   },
   "homepage": "https://github.com/hsynlms/zeynepjs#readme",
   "devDependencies": {
-    "autoprefixer": "^10.2.5",
-    "chalk": "^4.1.1",
+    "autoprefixer": "^10.4.2",
+    "chalk": "^4.1.2",
     "del": "^6.0.0",
     "gulp": "^4.0.2",
     "gulp-clean-css": "^4.3.0",
     "gulp-header": "^2.0.9",
-    "gulp-postcss": "^9.0.0",
+    "gulp-postcss": "^9.0.1",
     "gulp-rename": "^2.0.0",
     "gulp-sourcemaps": "^3.0.0",
     "gulp-uglify": "^3.0.2",
-    "postcss": "^8.3.0",
+    "postcss": "^8.4.5",
     "postcss-discard-comments": "^5.0.1",
-    "postcss-sorting": "^6.0.0",
+    "postcss-sorting": "^7.0.1",
     "snazzy": "^9.0.0",
-    "standard": "^16.0.3"
+    "standard": "^16.0.4"
   },
   "standard": {
     "ignore": [
