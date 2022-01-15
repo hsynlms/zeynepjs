@@ -1,5 +1,5 @@
 /*!
-* zeynepjs v2.1.4
+* zeynepjs v2.2.0
 * A light-weight multi-level jQuery side menu plugin.
 * It's fully customizable and is compatible with modern browsers such as Google Chrome, Mozilla Firefox, Safari, Edge and Internet Explorer
 * MIT License
@@ -13,7 +13,7 @@
   pointer-events:none;
   position:fixed;
   top:0;
-  transform:translateX(-100%);
+  transform:translateX(-100%) translateZ(0px);
   z-index:1011;
 }
 
@@ -39,7 +39,7 @@
 
 .zeynep.opened{
   pointer-events:auto;
-  transform:translateX(0px);
+  transform:translateX(0px) translateZ(0px);
 }
 
 .zeynep.submenu-opened{
