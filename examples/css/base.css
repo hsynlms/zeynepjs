@@ -7,7 +7,9 @@ body {
   color: #ffffff;
   font-family: 'Montserrat', sans-serif;
 }
-
+.p2{
+background-color: green;
+}
 html,
 body {
   height: 100%;
